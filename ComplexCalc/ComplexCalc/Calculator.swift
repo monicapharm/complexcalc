@@ -8,15 +8,6 @@
 
 import Foundation
 
-/*
-
-assert(calc.mathOp(args: [1, 2, 3], beg: 0, op: { $0 + $1 }) == 6)
-    // this is (((0 op 1) op 2) op 3)
-assert(calc.mathOp(args: [1, 2, 3, 4, 5], beg: 0, op: { $0 + $1 }) == 15)
-    // this is (((((0 op 1) op 2) op 3) op 4) op 5)
-assert(calc.mathOp(args: [1, 1, 1, 1, 1], beg: 1, op: { $0 * $1 }) == 1)
-    // this is (((((1 op 1) op 1) op 1) op 1) op 1)
-*/
 
 // All your work will go in here
 class Calculator {
@@ -65,6 +56,10 @@ class Calculator {
         return op(lhs, rhs)
     }
     
+    func mathOp(args: [Int], beg: Int, op: (_:Int, _:Int) -> Int) -> Int {
+        return args.reduce(beg, op)
+    }
+    
     func count(_ arr: [Int]) -> Int {
         return arr.count
     }
@@ -72,5 +67,5 @@ class Calculator {
     func avg(_ arr: [Int]) -> Int {
         return count(arr) == 0 ? 0 : add(arr) / count(arr)
     }
-    
+
 }
